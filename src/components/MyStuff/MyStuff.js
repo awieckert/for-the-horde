@@ -19,10 +19,22 @@ class MyStuff extends React.Component {
     });
   };
 
+  deleteMyStuff = (itemID) => {
+    const currentStuff = [...this.state.myStuff];
+    let itemToDeleteIndex;
+    currentStuff.forEach((item, i) => {
+      if (item.id === itemID) {
+        itemToDeleteIndex = i;
+      }
+    });
+    currentStuff.splice(itemToDeleteIndex, 1);
+    this.setState({myStuff: currentStuff});
+  };
+
   render () {
     const myItems = this.state.myStuff.map((item) => {
       return (
-        <Item key={item.id} fbID={item.id} details={item} />
+        <Item key={item.id} fbID={item.id} details={item} deleteMyStuff={this.deleteMyStuff}/>
       );
     });
     return (

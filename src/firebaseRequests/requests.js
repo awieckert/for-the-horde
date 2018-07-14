@@ -45,4 +45,14 @@ const getMyStuff = (uid) => {
   });
 };
 
-export default {getAllTheStuff, addMyItem, getMyStuff};
+const deleteItem = (itemId) => {
+  return new Promise ((resolve, reject) => {
+    axios.delete(`${constants.firebaseConfig.databaseURL}/MyStuff/${itemId}.json`).then((data) => {
+      resolve(data);
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+};
+
+export default {getAllTheStuff, addMyItem, getMyStuff, deleteItem};

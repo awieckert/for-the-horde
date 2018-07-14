@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import authRequests from '../../firebaseRequests/auth.js';
 import firebaseRequests from '../../firebaseRequests/requests.js';
 import './Item.css';
@@ -12,14 +13,28 @@ class Item extends React.Component {
     });
   };
 
+  deleteStuff = () => {
+    firebaseRequests.deleteItem(this.props.fbID).then().catch((err) => {
+      console.error('Could Not delete item from firebase: ', err);
+    });
+    this.props.deleteMyStuff(this.props.fbID);
+  }
+
   render () {
     const item = this.props.details;
+    let buttons = '';
+    if (item.uid && (item.uid === authRequests.getUid())) {
+      buttons = <button className='btn btn-danger' onClick={this.deleteStuff}>Delete</button>;
+    } else {
+      buttons = <button className='btn btn-primary' onClick={this.addToMyStuff}>Add To My Stuff</button>
+    };
+
     return (
       <div className="Item">
-        <img src={item.itemImage} alt='Item yeah' />
+        <Link to='/BigItem'><img src={item.itemImage} alt='Item yeah' /></Link>
         <h2>{item.itemName}</h2>
         <p>{item.itemDescription}</p>
-        <button className='btn btn-primary' onClick={this.addToMyStuff}>Add To My Stuff</button>
+        {buttons}
       </div>
     );
   }

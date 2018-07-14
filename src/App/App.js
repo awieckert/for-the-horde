@@ -8,6 +8,7 @@ import Login from '../components/Login/Login.js';
 import MyStuff from '../components/MyStuff/MyStuff.js';
 import Register from '../components/Register/Register.js';
 import Navbar from '../components/Navbar/Navbar.js';
+import BigItem from '../components/BigItem/BigItem.js';
 import './App.css';
 firebaseConnect();
 
@@ -78,6 +79,7 @@ class App extends Component {
                   <PublicRoute path='/login' authed={this.state.authed} component={Login}/>
                   <PrivateRoute path='/MyStuff' authed={this.state.authed} component={MyStuff}/>
                   <PrivateRoute path='/AllTheStuff' authed={this.state.authed} component={AllTheStuff}/>
+                  <PrivateRoute path='/BigItem' authed={this.state.authed} component={BigItem}/>
                 </Switch>
               </div>
             </div>
