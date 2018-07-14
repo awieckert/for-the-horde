@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import authRequests from '../../firebaseRequests/auth.js'
+import authRequests from '../../firebaseRequests/auth.js';
 import './Register.css';
 
 class Register extends React.Component {

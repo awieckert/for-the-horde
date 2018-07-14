@@ -50,10 +50,6 @@ class App extends Component {
     authed: false,
   };
 
-  logOut = () => {
-    this.setState({authed: false});
-  };
-
   componentDidMount () {
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
