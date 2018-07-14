@@ -18,4 +18,14 @@ const getAllTheStuff = () => {
   });
 };
 
-export default {getAllTheStuff};
+const addMyItem = (newItem) => {
+  return new Promise ((resolve, reject) => {
+    axios.post(`${constants.firebaseConfig.databaseURL}/AllTheStuff.json`, newItem).then((data) => {
+      resolve(data);
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+};
+
+export default {getAllTheStuff, addMyItem};
