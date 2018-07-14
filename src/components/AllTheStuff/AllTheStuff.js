@@ -1,6 +1,6 @@
 import React from 'react';
 import firebaseRequests from '../../firebaseRequests/requests.js';
-import Item from '../Item/Item.js'
+import Item from '../Item/Item.js';
 import './AllTheStuff.css';
 
 class AllTheStuff extends React.Component {
