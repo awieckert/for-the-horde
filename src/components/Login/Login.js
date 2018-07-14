@@ -9,10 +9,10 @@ class Login extends React.Component {
     password: '',
   };
 
-  loginUser = (e) => {
+  loginUserClick = (e) => {
     e.preventDefault();
     const user = {...this.state};
-    authRequests(user).then(() => {
+    authRequests.loginUser(user).then(() => {
       this.props.history.push('/MyStuff');
     }).catch((err) => {
       console.error('Login Failed: ', err);
@@ -57,7 +57,7 @@ class Login extends React.Component {
           </div>
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
-              <button type="submit" className="btn btn-default" onClick={this.loginUser}>Sign in</button>
+              <button type="submit" className="btn btn-default" onClick={this.loginUserClick}>Sign in</button>
             </div>
           </div>
         </form>
