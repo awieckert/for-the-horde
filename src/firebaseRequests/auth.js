@@ -8,4 +8,12 @@ const registerUser = (user) => {
   return firebase.auth().createUserWithEmailAndPassword(user.email, user.password);
 };
 
-export default {loginUser, registerUser};
+const userLogOut = () => {
+  return firebase.auth().signOut();
+};
+
+const getUid = () => {
+  return firebase.auth().currentUser.uid;
+};
+
+export default {loginUser, registerUser, userLogOut, getUid};
