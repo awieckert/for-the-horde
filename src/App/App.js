@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Route, BrowserRouter, Redirect, Switch} from 'react-router-dom';
+import firebase from 'firebase';
 import firebaseConnect from '../firebaseRequests/fbInitialize.js';
 import AllTheStuff from '../components/AllTheStuff/AllTheStuff.js';
 import Home from '../components/Home/Home.js';
@@ -52,6 +53,20 @@ class App extends Component {
   logOut = () => {
     this.setState({authed: false});
   };
+
+  componentDidMount () {
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({authed: true});
+      } else {
+        this.setState({authed: false});
+      }
+    });
+  }
+
+  componentWillUnmount () {
+    this.removeListener();
+  }
 
   render () {
     return (
