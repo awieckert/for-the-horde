@@ -26,7 +26,7 @@ class Item extends React.Component {
     if (item.uid && (item.uid === authRequests.getUid())) {
       buttons = <button className='btn btn-danger' onClick={this.deleteStuff}>Delete</button>;
     } else {
-      buttons = <button className='btn btn-primary' onClick={this.addToMyStuff}>Add To My Stuff</button>
+      buttons = <button className='btn btn-primary' onClick={this.addToMyStuff}>Add To My Stuff</button>;
     };
 
     return (
